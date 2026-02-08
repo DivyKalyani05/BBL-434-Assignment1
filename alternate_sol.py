@@ -136,6 +136,5 @@ with open("Output.Fa", "w") as f:
     for i in range(0, len(plasmid), 70):
         f.write(plasmid[i:i+70] + "\n")
 
-print("✅ Plasmid successfully generated → Output.Fa")
-print("ORI Position:", ori_index)
+print("Plasmid successfully generated → Output.Fa")
 print("Final plasmid length:", len(plasmid))
