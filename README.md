@@ -1,9 +1,6 @@
-30th Jan
-for the main solution i have used a deletion technique where i first found out the ORI via AT rich site method rather than the GC Skew method , as i researched and found out that the GC skew method gives out a weak signal for smaller sequences like plasmids.
-I then loaded the markers.tab and deleted the MCS which were absent in design.txt but present in markers.tab file , while protecting the ORI Region... this is similar to the example test case provided
-I used this as my primary solution cause when i read about plasmids i found that they have more things in their sequence ,apart from ORI region MCS and antibiotic inhibitor sights, which remain preserved in this solution.
+For the main solution, I implemented a restriction-site–based plasmid redesign approach in which an already functional plasmid sequence is edited to conform to a user-provided design specification.
+The origin of replication (ORI) is first identified using an AT-rich region detection method, rather than GC skew. This choice was made because GC skew analysis typically produces a weaker or ambiguous signal for short circular DNA sequences such as plasmids, particularly in the provided test case.
+After ORI detection, the markers.tab file is loaded as a reference dictionary of valid restriction sites. Any restriction sites present in the plasmid but absent in design.txt are removed, while the ORI region is explicitly protected from modification. This behavior mirrors the example test case provided, where the EcoRI site must be removed from the pUC19 sequence.
+This approach preserves all other functional regions of the plasmid. Since real plasmids contain several essential elements beyond the ORI, MCS, and antibiotic resistance sites, editing an existing plasmid ensures that these components remain intact.
 
-8th Feb 
-In my latest commit on 8th Feb i also added the widely used easier method , though wrong in my opinion to my submission as an alternate solution , where I detect the ORI region and extract the replication site , and ultimately add all the required MCS and 
-antibiotic resistance sites to make a new plasmid.
-This method though will cause the plasmid to not work in that particular microorganism according to my research.
+In a later commit (8th Feb), an alternate plasmid construction approach was added for comparison. In this method, the ORI is detected, extracted, and used as the basis for assembling a new plasmid by appending the required restriction sites and antibiotic resistance markers specified in the design file.This solution is included as an exploratory implementation to contrast with the primary approach. While it demonstrates plasmid construction logic, it does not preserve the full regulatory and replication machinery of the original plasmid, which may limit functionality in the target microorganism.
